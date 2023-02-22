@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * main - print out _putchar using printf
+ *
+ * Return: 0
+ */
+
 int main(void)
 {
 	_putchar('_');
