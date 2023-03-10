@@ -35,7 +35,7 @@ Additionally, the repository contains the following helper function:
 To use these functions in your C program, you can include the corresponding header files and compile your program with the corresponding source files. For example:
 
 ```c
-#include "holberton.h"
+#include "main.h"
 
 int main(void)
 {
