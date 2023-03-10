@@ -3,7 +3,7 @@
 This repository contains the following C functions:
 
 | Filename | Description |
-| -------- | ----------- |
+| ---------- | ------------- |
 | 0-isupper.c | Checks if a character is an uppercase letter |
 | 0-memset.c | Fills memory with a constant byte |
 | 0-strcat.c | Concatenates two strings |
