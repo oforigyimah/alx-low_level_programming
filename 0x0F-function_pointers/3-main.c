@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 			}
 		n1 = atoi(argv[1]);
 		n2 = atoi(argv[3]);
-
+		printf("%d%d",n1 ,n2);
 		if ((*argv[2] == '/' && n2) || (*argv[2] == '%' && n2))
 			{
 		  printf("Error\n");
