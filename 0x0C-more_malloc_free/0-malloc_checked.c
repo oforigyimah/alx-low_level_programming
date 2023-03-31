@@ -2,18 +2,18 @@
 #include <stdlib.h>
 
 /**
- * malloc_checked - allocate memory usinng malloc
- * @b: size of mem
- *
- * Return: point otherwise exit(93)
+ * malloc_checked -  function that allocates memory using malloc
+ * @b: int
+ * Return: void pionter
  */
 
 void *malloc_checked(unsigned int b)
 {
-		void *m;
+	void *p;
 
-		m = malloc(b);
-		if (!m)
-			exit(93);
-		return (m);
+	p = malloc(b);
+	if (p == NULL)
+		exit(98);
+	else
+		return (p);
 }

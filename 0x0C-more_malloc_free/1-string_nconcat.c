@@ -1,36 +1,41 @@
 #include "main.h"
 #include <stdlib.h>
-#include <stddef.h>
 
 /**
- * string_nconcat - concatenate two strings
+ * string_nconcat - function that concatenates two strings.
  * @s1: first string
  * @s2: second string
- * @n: byte of s2 to copy
- *
- * Return: pointer of resulting string. if fails return null
+ * @n: int
+ * Return: pionter
  */
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-		unsigned int i, len = 0, len2 = 0;
-		char *m;
+	unsigned int len_s1 = 0, len_s2 = 0, len;
+	char *p;
 
-		if (s1 == NULL)
-			s1 = "";
-		if (s2 == NULL)
-			s2 = "";
-		while (s1[len])
-			len++;
-		while (s2[len2] && n > len2)
-			len2++;
-		m = malloc(len + len2 + 1);
-		if (!m)
-			return (NULL);
-		for (i = 0; i < len; i++)
-			m[i] = s1[i];
-		for (i = 0; i < len2; i++)
-			m[len + i] = s2[i];
-		m[len + len2] = '\0';
-		return (m);
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+	while (s1[len_s1])
+		len_s1++;
+	while (s2[len_s2])
+		len_s2++;
+
+	if (n < len_s2)
+		len_s2 = n;
+	p = (char *) malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+
+	if (p == NULL)
+		return (NULL);
+	for (len = 0; len < (len_s1 + len_s2); len++)
+	{
+		if (len < len_s1)
+			p[len] = s1[len];
+		else
+			p[len] = s2[len - len_s1];
+	}
+	p[len] = '\0';
+	return (p);
 }
