@@ -1,13 +1,13 @@
 #include <stdio.h>
 
 /**
- * main - print orints the name of the fioe it was compiled from
- *
- * Return: 0 on success
+ * main - main
+ * Return: void
  */
 
-int main()
+int main(void)
 {
-		printf("%s\n", __FILE__);
-		return (0);
+	printf("%s\n", __FILE__);
+
+	return (0);
 }

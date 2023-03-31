@@ -1,66 +1,66 @@
-#include <stddef.h>
-#include <stdlib.h>
 #include "dog.h"
+#include <stdlib.h>
 
 /**
- * _strlen - a function that returns the length of a string 
- * @s: a string
- * Return: an integer
- */
-
-int _strlen(char *s)
-{
-  int len = 0;
-
-  while (*(s + len) != '\0')                           
-    len++;
-  return (len);
-}
-
-/**
- * _strcpy - function that copies the string pointed to by src
- * @src: copy from
- * @dest: copy to
+ * *_strdup - function with one argument
+ * @str: string argument
+ * Description: returns a pointer to allocated space in memory
  * Return: pointer
  */
 
-char *_strcpy(char *dest, char *src)
+char *_strdup(char *str)
 {
-  int i = 0;                                                 int j;
+	int i, j;
+	char *ptr;
 
-  while (src[i] != '\0')
-    i++;
-
-  for (j = 0; j <= i; j++)
-  {
-		*(dest + j) = src[j];
-  }
-
-  return (dest);
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (*(str + i) != '\0')
+	{
+		i++;
+	}
+	ptr = malloc(sizeof(char) * i + 1);
+	if (ptr == NULL)
+		return (NULL);
+	j = 0;
+	while (str[j] != '\0')
+	{
+		ptr[j] = str[j];
+		j++;
+	}
+	ptr[j] = '\0';
+											return (ptr);
 }
 
 /**
- * new_dog - create a new dog
- * @name: name of the dog
- * @age: age of the dog
- * @owner: owner of the dog
- *
- * Return: pointer to new dog
+ * new_dog - funtion to create new dog
+ * @name: dog name
+ * @age: dog age
+ * @owner: dog owner
+ * Return: dog
  */
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-		dog_t *d;
+	dog_t *new_d;
 
-		d = malloc(sizeof(dog_t));
-		if (!d || !name || !age || !owner)
-			return (NULL);
-		d->name = malloc(_strlen(name) + 1);
-		d->owner = malloc(_strlen(owner) + 1);
-		if (!d->name || !d->owner)
-			return (NULL);
-		_strcpy(d->name, name);
-		_strcpy(d->owner, owner);
-		d->age = age;
-		return (d);
+	new_d = malloc(sizeof(dog_t));
+	if (new_d == NULL)
+		return (NULL);
+	new_d->name = _strdup(name);
+	if (!new_d->name)
+	{
+		free(new_d);
+		return (NULL);
+	}
+	new_d->age = age;
+	new_d->owner = _strdup(owner);
+	if (!new_d->owner)
+	{
+		free(new_d->name);
+		free(new_d);
+		return (NULL);
+	}
+	return (new_d);
 }

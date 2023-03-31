@@ -1,14 +1,18 @@
-#include <stdlib.h>
 #include "dog.h"
+#include <stdlib.h>
 
 /**
- * free_dog - fu free.
- * @d: pointer to dog
- *
- * Return: voif
+ * free_dog - free memory
+ * @d: dog
+ * Return: void
  */
 
 void free_dog(dog_t *d)
 {
+	if (d != NULL)
+	{
+		free(d->name);
+		free(d->owner);
 		free(d);
+	}
 }
