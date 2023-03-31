@@ -1,51 +1,85 @@
 #include "variadic_functions.h"
 #include <stdio.h>
+#include <stdarg.h>
 
 /**
- * print_all - print like printf
- * @format: the for of what to print
- *
+ * p_char - print
+ * @a: valist
+ * Return: void
+ */
+void p_char(va_list a)
+{
+	printf("%c", va_arg(a, int));
+}
+
+/**
+ * p_int - print
+ * @a: valist
+ * Return: void
+ */
+void p_int(va_list a)
+{
+	printf("%d", va_arg(a, int));
+}
+
+/**
+ * p_float - print
+ * @a: valist
+ * Return: void
+ */
+void p_float(va_list a)
+{
+	printf("%f", va_arg(a, double));
+}
+
+/**
+ * p_string - print
+ * @a: valist
+ * Return: void
+ */
+void p_string(va_list a)
+{
+	char *s = va_arg(a, char *);
+
+	if (!s)
+		s = "(nil)";
+	printf("%s", s);
+}
+
+/**
+ * print_all - print all
+ * @format: array of format
  * Return: void
  */
 
 void print_all(const char * const format, ...)
 {
-		int w = 0, i;
-		int c;
-		double f;
-		char *s;
-		va_list args;
+	va_list str;
+	int i = 0, j;
+	char *sep = "";
+	ft_t arr[] = {
+		{'c', p_char},
+		{'i', p_int},
+		{'f', p_float},
+		{'s', p_string}
+	};
 
-		va_start(args, format);
-
-		while (format[w])
+	va_start(str, format);
+	while (format && format[i])
+	{
+		j = 0;
+		while (j < 4)
+		{
+			if (format[i] == arr[j].f)
 			{
-			switch (format[w])
-				{
-				case 'i':
-					i = va_arg(args, int);
-					printf("%i", i);
-					break;
-				case 'c':
-					c = va_arg(args, int);
-					printf("%c", c);
-					break;
-				case 'f':
-					f = va_arg(args, double);
-					printf("%f", f);
-					break;
-				case 's':
-					s = va_arg(args, char *);
-					if (!s)
-						s = "(nil)";
-					printf("%s", s);
-					break;
-				default:
-					break;
-				}
-			if (format[w + 1] && (format[w] == 'c' || format[w] == 'c'|| format[w] == 'i'))
-				printf(", ");
-			w++;
+				printf("%s", sep);
+				arr[j].func(str);
+				sep = ", ";
 			}
-		printf("\n");
+			j++;
+		}
+		i++;
+	}
+	va_end(str);
+	printf("\n");
 }
