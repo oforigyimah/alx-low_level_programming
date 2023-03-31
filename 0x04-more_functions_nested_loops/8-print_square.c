@@ -1,22 +1,25 @@
 #include "main.h"
 
 /**
- * print_square - func the outputs sqrs
- * @size: the size of sqrs
+ * print_square - prints a square of size size
+ * @size: size of square
  *
  * Return: void
  */
 
+
 void print_square(int size)
 {
-		int i, j;
+	int a, b;
 
-		for (i = 0; i < size; i++)
-			{
-			for (j = 0; j < size; i++)
-				{
-				_putchar('#');
-				}
-			_putchar('\n');
-			}
+	if (size <= 0)
+		_putchar('\n');
+	for (a = 0; a < size; a++)
+	{
+		for (b = 0; b < (size); b++)
+		{
+			_putchar('#');
+		}
+		_putchar('\n');
+	}
 }
