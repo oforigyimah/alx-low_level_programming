@@ -1,3 +1,4 @@
+#include <fcntl.h>
 #include <unistd.h>
 #include <asm-generic/fcntl.h>
 #include <stdio.h>
