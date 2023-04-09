@@ -18,7 +18,7 @@ This function appends the text content specified by `text_content` to an existin
 
 ## Usage
 
-To use these functions in your C program, include the `main.h` header file and link the program with the appropriate libraries. 
+To use these functions in your C program, include the `main.h` header file and link the program with the appropriate libraries.
 
 Example usage:
 
