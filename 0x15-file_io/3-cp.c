@@ -1,5 +1,8 @@
 #include <unistd.h>
+<<<<<<< HEAD
 #include <fcntl.h>
+=======
+>>>>>>> 4f3f082e9d622bb9996109e18a5f3d63bec2d77e
 #include <stdio.h>
 #include <stdlib.h>
 
